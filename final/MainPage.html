@@ -1,3 +1,4 @@
+#!/usr/bin/firefox
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 
 <html>
@@ -19,13 +20,14 @@ width:1800px;
 height:30px;
 position:fixed;
 padding-top:15px;
-padding-left:50px;
+padding-left:60px;
+z-index:4;
 }
 #top_title{
 font-family:arial;
 font-size:15px;
 color:white;
-margin-left:150px;
+margin-left:8%;
 }
 #center_title{
 text-align:center;
@@ -34,14 +36,62 @@ font-family:arial;
 font-weight:bold;
 color:navy;
 }
-#center_search{
+#center_area{
+position:relative;
 width:1200px;
 height:200px;
-background-color:5F5FBF;
+border: 1px solid green;
 margin-left : 160px;
 }
+#center_search{
+position:absolute;
+width:500px;
+height:80px;
+border: 2px solid #5F5FBF;
+top:60px;
+left:50px;
+}
+#search_input{
+border: 0px;
+font-size: 24px;
+float:left;
+width: 400px;
+height:80px;
+padding:20px;
+}
+#search_button{
+border: 0px;
+color:white;
+font-size: 24px;
+float:right;
+width:80px;
+height:100%;
+background-color : 5F5FBF;
+}
+#center_search2{
+position:absolute;
+width:500px;
+height:80px;
+border: 2px solid #5F5FBF;
+top:60px;
+right:50px;
+}
+.filebox label{
+color:white;
+background-color: #5F5FBF;
+font-size: 24px;
+vertical-align: middle;
+height:50;
+}
+.filebox input[type="file"]{
+position: absolute;
+width: 300px;
+height: 80px;
+padding: 0px;
+border:0px;
+}
 #mainimg{
-width:300px; 
+width:300px;
 height:300px;
 }
 #left_img{
@@ -64,7 +114,7 @@ A:hover{text-decoration:none; color:yellow;}
 <body>
 <div id="top_fixed">
  <span id="top_title"> 
-  <a href="developer.html" onclick="window.open(this.href, '_blank', 'width=500px,height=500px,toolbars=no,scrollbars=no'); return false;"> 
+  <a href="developer.html" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no,scrollbars=no'); return false;"> 
    Developers 
   </a> 
  </span> 
@@ -76,13 +126,28 @@ A:hover{text-decoration:none; color:yellow;}
 </div>
 <br><br><br><br><br>
 <p> 
- <img src="images/KNU.png" id="left_img" alt="main image"/> 
+ <img src="images/KNU.png" id="left_img" alt="KNU logo"/> 
  <img src="images/TISG.png" id="mainimg" alt="main image"/>
- <img src="images/python1.png" id="right_img" alt="main image"/>
+ <img src="images/python1.png" id="right_img" alt="python logo"/>
 </p>
-<p> <span id="center_title"> WEBPAGE SIMILARITY ANALYSIS </span> </p>
+<p> 
+ <span id="center_title"> WEBPAGE SIMILARITY ANALYSIS </span> 
+</p>
 <p> <hr width="700px" color="5F5FBF"> </p>
-<div id="center_search"> <h3 class="tocenter" style="font-size:20px;color:white;">Search Area ( TEST ) </h3> </div>
+<div id="center_area"> 
+ <h3 class="tocenter" style="font-size:20px; color:green;"> Search </h3>
+  <div id="center_search">
+   <form method="POST">
+    <input id="search_input" type ="text" placeholder="Enter the URL">
+    <button id="search_button">검색</button>
+   </form>
+  </div> 
+  <div id="center_search2">
+   <div class="filebox">
+    <input type="file">
+   </div>
+  </div>
+</div>
 <p> <hr width="1200px" color="5F5FBF"> </p>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
