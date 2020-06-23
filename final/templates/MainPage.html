@@ -1,10 +1,10 @@
-#!/usr/bin/firefox
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 
 <html>
 <head>
 <title> Final Project Webpage test </title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="{{ url_for('static', filename='card.css') }}">
 <style>
 p{ text-align:center; }
 .tocenter{ text-align:center;}
@@ -40,7 +40,7 @@ color:navy;
 position:relative;
 width:1200px;
 height:200px;
-border: 1px solid green;
+border: 1px solid white;
 margin-left : 160px;
 }
 #center_search{
@@ -126,16 +126,18 @@ A:hover{text-decoration:none; color:yellow;}
 </div>
 <br><br><br><br><br>
 <p> 
- <img src="{{url_for('static', filename='images/KNU.png')}}" id="left_img" alt="KNU logo"/> 
- <img src="{{url_for('static', filename='images/TISG.png')}}"" id="mainimg" alt="main image"/>
- <img src="{{url_for('static', filename='images/python1.png')}}"" id="right_img" alt="python logo"/>
+ <img src="images/KNU.png" id="left_img" alt="KNU logo"/> 
+ <img src="images/TISG.png" id="mainimg" alt="main image"/>
+ <img src="images/python1.png" id="right_img" alt="python logo"/>
 </p>
 <p> 
  <span id="center_title"> WEBPAGE SIMILARITY ANALYSIS </span> 
 </p>
 <p> <hr width="700px" color="5F5FBF"> </p>
 <div id="center_area"> 
- <h3 class="tocenter" style="font-size:20px; color:green;"> Search </h3>
+ <h3 class="tocenter" style="font-family:arial; font-size:24px; color:navy; padding-right:290px;"> 
+  - Search by URL -<span style="padding-left:400px;">- Search by FILE -</span> 
+ </h3>
   <div id="center_search">
    <form method="POST">
     <input id="search_input" type ="text" placeholder="Enter the URL">
@@ -149,9 +151,79 @@ A:hover{text-decoration:none; color:yellow;}
   </div>
 </div>
 <p> <hr width="1200px" color="5F5FBF"> </p>
+<br><br>
+<div class="csslider infinity" id="slider1">
+  <input type="radio" name="slides" id="slides_1"/>
+  <input type="radio" name="slides" checked="checked" id="slides_2"/>
+  <input type="radio" name="slides" id="slides_3"/>
+  <input type="radio" name="slides" id="slides_4"/>
+  <input type="radio" name="slides" id="slides_5"/>
+  <input type="radio" name="slides" id="slides_6"/>
+  <ul>
+    <li>
+      <h1>Say hello to CSS3</h1>
+      <p>CSSlider is lightweight & easy to use slider. No JS - pure CSS.</p>
+    </li>
+    <li><img src="https://rawgithub.com/drygiel/csslider/master/examples/themes/stones.jpg"/>
+    </li>
+    <li>
+      <div id="bg">
+        <div>
+          <h1>CSS Events</h1>
+          <p>When slide 3 is reached - play CSS animation!</p>
+        </div>
+      </div>
+    </li>
+    <li class="scrollable">
+      <h1>Lots of text</h1>
+      <h2>Scrollable one</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada mi,
+        semper id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada mi,
+        semper id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada mi,
+        semper id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada mi,
+        semper id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada mi,
+        semper id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada mi,
+        semper id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+      </p>
+    </li>
+    <li>
+      <div id="center"> <a class="nice-link" href="https://github.com/drygiel/csslider" data-text="More examples on github" target="_blank">More examples on github</a></div>
+    </li>
+    <li>
+      <div id="center"><a class="play" id="dex-sign" href="https://drygiel.com" target="_blank"></a></div>
+    </li>
+  </ul>
+  <div class="arrows">
+    <label for="slides_1"></label>
+    <label for="slides_2"></label>
+    <label for="slides_3"></label>
+    <label for="slides_4"></label>
+    <label for="slides_5"></label>
+    <label for="slides_6"></label>
+    <label class="goto-first" for="slides_1"></label>
+    <label class="goto-last" for="slides_6"></label>
+  </div>
+  <div class="navigation"> 
+    <div>
+      <label for="slides_1"></label>
+      <label for="slides_2"></label>
+      <label for="slides_3"></label>
+      <label for="slides_4"></label>
+      <label for="slides_5"></label>
+      <label for="slides_6"></label>
+    </div>
+  </div>
+</div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <p>END</p>
 <br><br>
 </body>
+<script src="script.js"> </script>
 </html>
