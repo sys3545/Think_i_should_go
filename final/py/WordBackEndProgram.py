@@ -65,11 +65,9 @@ class WordProgram:
 
         self.insertData(self.es,self.index_name,self.docType,URL)
 
-    @property
     def getBoWLength(self):
         return len(self.word_bag)
 
-    @property
     def getTime(self):
         return self.word_config_time
     
