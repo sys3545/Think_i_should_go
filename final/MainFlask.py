@@ -19,6 +19,8 @@ def index():
         bowLength = urlObject.getBoWLength()
         return render_template('MainPage.html',URL = url,time=time,bowLength=bowLength)
 
+if __name__ == "__main__":
+    app.run(debug = True)
 
 # methods=['GET,POST']
 

@@ -126,9 +126,9 @@ A:hover{text-decoration:none; color:yellow;}
 </div>
 <br><br><br><br><br>
 <p> 
- <img src="images/KNU.png" id="left_img" alt="KNU logo"/> 
- <img src="images/TISG.png" id="mainimg" alt="main image"/>
- <img src="images/python1.png" id="right_img" alt="python logo"/>
+  <img src="{{url_for('static', filename='images/KNU.png')}}" id="left_img" alt="KNU logo"/> 
+  <img src="{{url_for('static', filename='images/TISG.png')}}" id="mainimg" alt="main image"/>
+  <img src="{{url_for('static', filename='images/python1.png')}}" id="right_img" alt="python logo"/>
 </p>
 <p> 
  <span id="center_title"> WEBPAGE SIMILARITY ANALYSIS </span> 
@@ -141,7 +141,8 @@ A:hover{text-decoration:none; color:yellow;}
   <div id="center_search">
    <form method="POST">
     <input id="search_input" type ="text" placeholder="Enter the URL">
-    <button id="search_button">검색</button>
+    <input id="search_button" type="submit" value="검색">
+    <!-- <button id="search_button">검색</button> -->
    </form>
   </div> 
   <div id="center_search2">
