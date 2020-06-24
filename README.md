@@ -5,3 +5,5 @@ the repository for final project of opensource programming team 7, prof snowflow
 백엔드 프로그램( data insert to Elasticesearch, get tf-idf, get cosine similarity ) 업로드
 flask 구조 구축( template-static-python )
 
+2020-06-24
+프론트엔드 구조 구성 끝
