@@ -12,7 +12,7 @@ def index():
     if request.method=='GET':
         return render_template('MainPage.html')
     elif request.method=='POST':
-        url = request.form['URL']
+        url = request.form["URL"]
 
         urlObject = WordProgram(url)
         time=urlObject.getTime()

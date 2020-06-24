@@ -139,8 +139,8 @@ A:hover{text-decoration:none; color:yellow;}
   - Search by URL -<span style="padding-left:400px;">- Search by FILE -</span> 
  </h3>
   <div id="center_search">
-   <form method="POST">
-    <input id="search_input" type ="text" placeholder="Enter the URL">
+   <form action="http://127.0.0.1:5000/" method="POST">
+    <input id="search_input" name="URL" type ="text" placeholder="Enter the URL">
     <input id="search_button" type="submit" value="검색">
     <!-- <button id="search_button">검색</button> -->
    </form>
@@ -153,6 +153,11 @@ A:hover{text-decoration:none; color:yellow;}
 </div>
 <p> <hr width="1200px" color="5F5FBF"> </p>
 <br><br>
+<div>
+  <p>
+    {{URL, time, bowLength}}
+  </p>
+</div>
 <div class="csslider infinity" id="slider1">
   <input type="radio" name="slides" id="slides_1"/>
   <input type="radio" name="slides" checked="checked" id="slides_2"/>

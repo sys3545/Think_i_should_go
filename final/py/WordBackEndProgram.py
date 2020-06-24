@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import requests, re, json, nltk, ssl, time, os
 from bs4 import BeautifulSoup
 from nltk.corpus import stopwords 
