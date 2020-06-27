@@ -26,12 +26,21 @@ body{
   float: left;
   margin: 0;
   padding: 0;
-  width: 500px;
+  width: 1000px;
   height: 300px;
-  background: #ccc;
+  background:#5F5FBF;
   text-align: center;
   line-height: 300px;
 }
+
+#slider ul:nth-child(even) {
+	background:#5F5FBF;
+	}
+
+#slider ul:nth-child(odd) {
+        background:navy;
+        }
+
 
 a.control_prev, a.control_next {
   position: absolute;
