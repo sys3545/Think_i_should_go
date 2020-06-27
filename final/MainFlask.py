@@ -61,8 +61,6 @@ def develope(URL=None):
 
 @app.route('/pop',methods=['GET'])
 def pop(URL=None):
-    
-    topWords=
     return render_template('pop.html')
 
 if __name__ == "__main__":
