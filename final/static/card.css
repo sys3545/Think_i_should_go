@@ -33,15 +33,6 @@ body{
   line-height: 300px;
 }
 
-#slider ul:nth-child(even) {
-	background:#5F5FBF;
-	}
-
-#slider ul:nth-child(odd) {
-        background:navy;
-        }
-
-
 a.control_prev, a.control_next {
   position: absolute;
   top: 40%;
