@@ -48,8 +48,8 @@
   z-index: 1;
   font-size: 0;
   line-height: 0;
-  background-color: #3A3A3A;
-  border: 10px solid #3A3A3A;
+  background-color: #000080;
+  border: 10px solid #000080;
   margin: 0 auto;
   padding: 0;
   overflow: hidden;
@@ -322,7 +322,7 @@ h2 {
   animation: sign-anim 3.5s 0.5s steps(85) forwards;
 }
 #bg {
-  color: #000;
+  color: navy;
   padding: 22px 0;
   position: absolute;
   left: 0;

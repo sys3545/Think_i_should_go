@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title> Final Project Webpage test </title>
+<title> Final Project Webpage </title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="{{ url_for('static', filename='card.css') }}">
 <style>
@@ -22,7 +22,7 @@ height:30px;
 position:fixed;
 padding-top:15px;
 padding-left:0px;
-padding-right:100px;
+padding-right:300px;
 z-index:4;
 }
 #top_title{
@@ -40,10 +40,9 @@ color:navy;
 }
 #center_area{
 position:relative;
-width:1200px;
+width:100%;
 height:200px;
 border: 1px solid white;
-margin-left : 160px;
 }
 #center_search{
 position:absolute;
@@ -51,7 +50,8 @@ width:500px;
 height:80px;
 border: 2px solid #5F5FBF;
 top:60px;
-left:300px;
+left:28%;
+margin-left:-5%;
 }
 #search_input{
 border: 0px;
@@ -76,7 +76,8 @@ width:500px;
 height:80px;
 border: 2px solid #5F5FBF;
 top:60px;
-left:1100px;
+left:55%;
+margin-right:10%;
 }
 .filebox label{
 color:white;
@@ -166,15 +167,19 @@ A:hover{text-decoration:none; color:yellow;}
   <input type="radio" name="slides" id="slides_6"/>
   <ul>
     <li>
-      <h1>Say hello to CSS3</h1>
-      <p>CSSlider is lightweight & easy to use slider. No JS - pure CSS.</p>
+      <div id="bg">
+       <div>
+         <h1>www.google.com</h1>
+         <p>This is main page</p>
+       </div>
+      </div>
     </li>
     <li><img src="https://rawgithub.com/drygiel/csslider/master/examples/themes/stones.jpg"/>
     </li>
     <li>
       <div id="bg">
         <div>
-          <h1>CSS Events</h1>
+          <h1>www.naver.com</h1>
           <p>When slide 3 is reached - play CSS animation!</p>
         </div>
       </div>
