@@ -165,7 +165,7 @@ A:hover{text-decoration:none; color:yellow;}
   <a href="#" class="control_next">></a>
   <a href="#" class="control_prev"><</a>
   <ul style="width: 2000px; margin-left:-1000px;">
-   {% for i in URL_list|length %}
+   {% for i in range(URL_list|length) %}
      <li> {{URL_list[i]}} {{time_list[i]}} {{bowLength_list[i]}} </li>
    {% endfor %}
   </ul>  
