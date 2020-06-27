@@ -165,10 +165,9 @@ A:hover{text-decoration:none; color:yellow;}
   <a href="#" class="control_next">></a>
   <a href="#" class="control_prev"><</a>
   <ul style="width: 2000px; margin-left:-1000px;">
-    <li>SLIDE 1 {{URL}}</li>
-    <li style="background: #5F5FBF;">SLIDE 2</li>
-    <li>SLIDE 3</li>
-    <li style="background: #5F5FBF;">SLIDE 4</li>
+   {% for i in URL_list|length %}
+     <li> {{URL_list[i]}} {{time_list[i]}} {{bowLength_list[i]}} </li>
+   {% endfor %}
   </ul>  
 </div>
 {% endif %}
