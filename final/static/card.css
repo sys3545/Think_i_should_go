@@ -30,7 +30,7 @@ body{
   height: 300px;
   background:#5F5FBF;
   text-align: center;
-  line-height: 300px;
+  line-height: 20px;
 }
 
 a.control_prev, a.control_next {

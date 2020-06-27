@@ -111,16 +111,32 @@ padding-bottom:50px;
 A:link{text-decoration:none; color:white;}
 A:visited{text-decoration:none; color:white;}
 A:hover{text-decoration:none; color:yellow;}
+
+#result_wrap{
+width:1000px;
+height:300px;
+background:green;
+margin:auto;
+display:grid;
+grid-template-column:50% 50%;
+}
+#result_button{
+width:300px;
+height:200px;
+background:white;
+text-align:center;
+margin:auto;
+}
 </style>
 </head>
 <body>
 <div id="top_fixed">
  <span id="top_title"> 
-  <a href="developer.html" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no,scrollbars=no'); return false;"> 
+  <a href="{{url_for('templates', filename='developer.html')}}" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no,scrollbars=no'); return false;"> 
    Developers 
   </a> 
  </span> 
- <span id="top_title"> <a href="https://github.com/"> GitHup  </a> </span>
+ <span id="top_title"> <a href="https://github.com/"> GitHub  </a> </span>
  <span id="top_title"> <a href="https://www.python.org/"> Python </a> </span>
  <span id="top_title"> <a href="https://ubuntu.com/"> Ubuntu  </a> </span>
  <span id="top_title"> <a href="https://opensource.com/"> Open Source </a> </span>
@@ -155,7 +171,7 @@ A:hover{text-decoration:none; color:yellow;}
 <br><br>
 <div>
   <p>
-    {{URL, time, bowLength}}
+    <span style="font-weight:bold; font-size:30px; font-family:arial; color:navy;">ANALYSIS RESULT </span>
   </p>
 </div>
 {% if URL == None %}
@@ -166,11 +182,22 @@ A:hover{text-decoration:none; color:yellow;}
   <a href="#" class="control_prev"><</a>
   <ul style="width: 2000px; margin-left:-1000px;">
    {% for i in range(URL_list|length) %}
-     <li> {{URL_list[i]}} {{time_list[i]}} {{bowLength_list[i]}} </li>
+     <li>
+      <span style="font-weight:bold; font-size:32px; font-family:arial; color:white;"> {{URL_list[i]}}<br><br> </span> 
+      <span style="font-weight:bold; font-size:22px; font-family:arial; color:white;"> TIME : {{time_list[i]}}sec  Words count : {{bowLength_list[i]}}
+     </li>
    {% endfor %}
   </ul>  
 </div>
 {% endif %}
+<div id="result_wrap">
+ <div id="result_button">
+   <a href="{{url_for('templates', filename='pop.html')}}" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no'); return false;">simility </a>
+ </div>
+ <div id="result_button"> 
+  <a href="{{url_for('templates', filename='pop.html')}}" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no'); return false;">Top 10 ward</a>
+ </div>
+</div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <p>END</p>
