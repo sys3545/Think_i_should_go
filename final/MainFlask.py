@@ -19,6 +19,10 @@ def allowed_file(filename):
 @app.route('/',methods=['GET','POST'])
 def index(URL=None):
     URL_list=[]
+    urlList=[]
+    timeList=[]
+    bowList=[]
+
     WordProgram.downloadNLTK()
     if request.method=='GET':
         return render_template('MainPage.html')
@@ -36,14 +40,16 @@ def index(URL=None):
         elif "FILE" in request.files:
             file = request.files["FILE"]
             if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
+                filename = "./txtFolder/" + secure_filename(file.filename)
                 program = ActTextFile(filename)
                 URL_list += program.getList()
-                # print(URL_list[0].getURL)
-                # url = URL_list[0].getURL
+
+                for l in URL_list:
+                    urlList.append(l.getURL())
+                    timeList.append(l.getTime())
+                    bowList.append(l.getBoWLength())
                 
-                # URL =URL_list[0].getAllData(url,0)
-                return render_template('MainPage.html',URL = URL_list[0].getURL(), time=URL_list[0].getTime(),bowLength=URL_list[0].getBoWLength())
+                return render_template('MainPage.html',URL_list = urlList, time_list=timeList,bowLength_list=bowList)                
                 
         else:
             return render_template('MainPage.html')
