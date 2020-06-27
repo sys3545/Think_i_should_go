@@ -147,7 +147,7 @@ A:hover{text-decoration:none; color:yellow;}
   <div id="center_search2">
     <form action="http://127.0.0.1:5000/" method="POST" enctype="multipart/form-data">
       <input type="file" name="FILE">
-      <input type="submit" value="입력">
+      <input id="search_button" type="submit" value="입력">
     </form>
  </div>
 </div>
@@ -158,16 +158,20 @@ A:hover{text-decoration:none; color:yellow;}
     {{URL, time, bowLength}}
   </p>
 </div>
+{% if URL == None %}
+  <p> Please Input </p>
+{% else %}
 <div id="slider" style="width:1000px; height:300px;">
   <a href="#" class="control_next">></a>
   <a href="#" class="control_prev"><</a>
   <ul style="width: 2000px; margin-left:-500px;">
-    <li>SLIDE 1</li>
+    <li>SLIDE 1 {{URL}}</li>
     <li style="background: #5F5FBF;">SLIDE 2</li>
     <li>SLIDE 3</li>
     <li style="background: #5F5FBF;">SLIDE 4</li>
   </ul>  
 </div>
+{% endif %}
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <p>END</p>

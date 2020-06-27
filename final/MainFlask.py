@@ -17,7 +17,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/',methods=['GET','POST'])
-def index():
+def index(URL=None):
     URL_list=[]
     WordProgram.downloadNLTK()
     if request.method=='GET':
