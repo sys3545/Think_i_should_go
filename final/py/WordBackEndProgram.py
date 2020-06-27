@@ -13,10 +13,11 @@ import numpy as np
 #exp = WordProgram()
 class WordProgram:
 
+    URL=''
+    word_config_time=0
     word_bag={}
     index_name = "crawl_data"        
     docType="bow_data"
-    number=0
 
     es_host="127.0.0.1" #elasticsearch 연결.
     es_port="9200"
@@ -25,16 +26,6 @@ class WordProgram:
     def __init__(self,URL):
         self.URL = URL
         word_bag = self.word_bag
-        self.number +=1
-        
-        try: #ssl 관련 오류 해결
-            _create_unverified_https_context = ssl._create_unverified_context
-        except AttributeError:
-            pass
-        else:
-            ssl._create_default_https_context = _create_unverified_https_context
-        nltk.download('stopwords')
-        nltk.download('punkt')
 
         req = requests.get(URL) #----crawling 시작-----
         start_time= time.time()
@@ -63,11 +54,25 @@ class WordProgram:
 
         self.insertData(self.es,self.index_name,self.docType,URL)
 
+    @staticmethod
+    def downloadNLTK():
+        try: #ssl 관련 오류 해결
+            _create_unverified_https_context = ssl._create_unverified_context
+        except AttributeError:
+            pass
+        else:
+            ssl._create_default_https_context = _create_unverified_https_context
+        nltk.download('stopwords')
+        nltk.download('punkt')
+
     def getBoWLength(self):
         return len(self.word_bag)
 
     def getTime(self):
         return self.word_config_time
+
+    def getURL(self):
+        return self.URL
     
     def insertData(self,es,index_name,docType,URL):
         word_bag=self.word_bag
@@ -174,5 +179,21 @@ class WordProgram:
         docs_res = sorted(cos_dict.items(), key=(lambda x:x[1]),reverse=True)
         # print(docs_res)
         return docs_res[0] #tuple 을 반환
+
+
+class ActTextFile:
+
+    URL_list=[]
+    def __init__(self,filename):
+        URL_list = self.URL_list
+        with open(filename,'r',encoding='utf-8') as readF:
+            contents = readF.readlines()
+            for line in contents:
+                urlobject = WordProgram(line) 
+                URL_list.append(urlobject)
+                print(line)
+        
+    def getList(self):
+        return self.URL_list.copy()
 
 

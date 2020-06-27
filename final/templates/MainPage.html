@@ -145,9 +145,10 @@ A:hover{text-decoration:none; color:yellow;}
    </form>
   </div> 
   <div id="center_search2">
-   <div class="filebox">
-    <input type="file">
-   </div>
+    <form action="http://127.0.0.1:5000/" method="POST" enctype="multipart/form-data">
+      <input type="file" name="FILE">
+      <input type="submit" value="입력">
+    </form>
  </div>
 </div>
 <p> <hr width="2400px" color="5F5FBF"> </p>
