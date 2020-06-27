@@ -54,7 +54,17 @@ def index(URL=None):
         else:
             return render_template('MainPage.html')
 
+
+@app.route('/developer',methods=['GET'])
+def develope(URL=None):
+    return render_template('developer.html')
+
+@app.route('/pop',methods=['GET'])
+def pop(URL=None):
     
+    topWords=
+    return render_template('pop.html')
+
 if __name__ == "__main__":
     app.run(debug = True)
 
