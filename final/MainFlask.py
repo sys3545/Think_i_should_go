@@ -28,8 +28,6 @@ def index(URL=None):
     global timeList
     global bowList
 
-    URL_list=[]
-    count=0
     urlList=[]
     timeList=[]
     bowList=[]
@@ -45,9 +43,15 @@ def index(URL=None):
 
     else: #post
         if "URL" in request.form :
+            s = 0
             url = request.form["URL"]
-            urlObject = WordProgram(url)
-            URL_list.append(urlObject)
+            for o in URL_list:
+                if url == o.getURL():
+                    s=1
+                    break
+            if s==0:
+                urlObject = WordProgram(url)
+                URL_list.append(urlObject)
 
             for l in URL_list:
                 urlList.append(l.getURL())
@@ -57,11 +61,19 @@ def index(URL=None):
             return render_template('MainPage.html',URL_list = urlList, time_list=timeList,bowLength_list=bowList)    
         
         elif "FILE" in request.files:
+            s=0
             file = request.files["FILE"]
             if file and allowed_file(file.filename):
                 filename = "./txtFolder/" + secure_filename(file.filename)
                 program = ActTextFile(filename)
-                URL_list += program.getList()
+                programList = program.getList()
+                for i in range(len(programList)):
+                    if len(URL_list) < 1: break
+                    for u in URL_list:
+                        if u.getURL() == programList[i].getURL():
+                            programList.pop(i)
+
+                URL_list += programList
 
                 for l in URL_list:
                     urlList.append(l.getURL())
@@ -87,7 +99,8 @@ def develope():
 
 @app.route('/pop',methods=['GET'])
 def pop(count,status):   
-    url= URL_list[int(count)].getURL()
+    url= URL_list[int(count)].getURL()   
+
     sim = WordProgram.getAllData(url,status)
     return render_template('pop.html',sim=sim,url=url)
     

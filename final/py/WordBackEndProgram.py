@@ -22,7 +22,7 @@ class WordProgram:
     es_host="127.0.0.1" #elasticsearch 연결.
     es_port="9200"
     es = Elasticsearch([{"host":es_host,"port":es_port}],timeout=30)
-
+    
     def __init__(self,URL):
         self.URL = URL
         word_bag = self.word_bag
@@ -42,12 +42,13 @@ class WordProgram:
         for s in sentence_list:  #정제 작업 + BOW 생성 + running time 생성
             word_list = re.findall("[A-Za-z']+",s.strip())
             for w in word_list:
+                w=w.lower()
                 if w not in swlist: #단어가 stopword 인 경우
                     if w in word_bag.keys():
                         word_bag[w] += 1
                     elif w not in word_bag.keys():
                         word_bag[w] =1
-
+        print(URL,word_bag)
         self.word_config_time="{:.3f}".format(time.time() - start_time) #get time
         
         #저장 데이터 형식 지정.
@@ -187,12 +188,11 @@ class ActTextFile:
 
     URL_list=[]
     def __init__(self,filename):
-        URL_list = self.URL_list
         with open(filename,'r',encoding='utf-8') as readF:
             contents = readF.readlines()
             for line in contents:
                 urlobject = WordProgram(line) 
-                URL_list.append(urlobject)
+                self.URL_list.append(urlobject)
                 # print(line)
         
     def getList(self):
