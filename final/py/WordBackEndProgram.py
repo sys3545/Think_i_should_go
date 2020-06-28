@@ -88,12 +88,14 @@ class WordProgram:
 
     # def deleteData():
     
-    def getAllData(self,URL,status):
-        es=self.es
-        index_name = self.index_name
+    @classmethod
+    def getAllData(cls,URL,status):
+        es=cls.es
+        index_name = cls.index_name
 
         res = es.search(index=index_name, body={'from':0,'size':10000,'query':{'match_all':{}}})
         URL_BOW_list=[]
+
         for r in res['hits']['hits']:
             temp_dict={}
             # print('URL:',r['_id'],'\ncount: ')
@@ -104,10 +106,10 @@ class WordProgram:
             URL_BOW_list.append({"URL":r['_id'],"BOW":temp_dict})
 
         if status==0: #top10 word button clicked
-            topWords=self.makeTopWords(es,URL_BOW_list,URL)  
+            topWords= WordProgram.makeTopWords(cls,es,URL_BOW_list,URL)  
             return topWords
         else:
-            similarWebPage=self.findSimilarSite(es,URL_BOW_list,URL)
+            similarWebPage= WordProgram.findSimilarSite(cls,es,URL_BOW_list,URL)
             return similarWebPage
 
     def makeTopWords(self,es,URL_BOW_list,URL):
@@ -174,11 +176,11 @@ class WordProgram:
                         temp_list.append(BOW_list["BOW"][v])
                     else:
                         temp_list.append(0)
-                cos_dict[BOW_list["URL"]] = self.cos_sim(np.array(cocs),np.array(temp_list.copy()))
+                cos_dict[BOW_list["URL"]] = WordProgram.cos_sim(self,np.array(cocs),np.array(temp_list.copy()))
         
         docs_res = sorted(cos_dict.items(), key=(lambda x:x[1]),reverse=True)
         # print(docs_res)
-        return docs_res[0] #tuple 을 반환
+        return docs_res[:3] #tuple 을 반환
 
 
 class ActTextFile:
@@ -191,7 +193,7 @@ class ActTextFile:
             for line in contents:
                 urlobject = WordProgram(line) 
                 URL_list.append(urlobject)
-                print(line)
+                # print(line)
         
     def getList(self):
         return self.URL_list.copy()

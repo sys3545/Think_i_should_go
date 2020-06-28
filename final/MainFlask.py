@@ -4,11 +4,12 @@ from py.WordBackEndProgram import ActTextFile
 from flask import Flask, render_template, redirect, url_for, request
 import requests  #requests 와 request는 다르다!!!
 from werkzeug.utils import secure_filename #download werkzeug
+from bs4 import BeautifulSoup
+import os
 
-import sys
 
-
-
+URL_list=[]
+count=0
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'txt'}
 
@@ -18,12 +19,19 @@ def allowed_file(filename):
 
 @app.route('/',methods=['GET','POST'])
 def index(URL=None):
-    URL_list=[]
+    global URL_list
+    global count
+
     urlList=[]
     timeList=[]
     bowList=[]
 
-    WordProgram.downloadNLTK()
+    if count==0:
+        WordProgram.downloadNLTK()
+    elif count==2:
+        os.system("""curl -X PUT localhost:9200/crawl_data/_settings -H 'Content-Type: application/json' -d'{ "index.mapping.total_fields.limit": 20000 } '""") 
+    count+=1
+    
     if request.method=='GET':
         return render_template('MainPage.html')
 
@@ -33,10 +41,13 @@ def index(URL=None):
             urlObject = WordProgram(url)
             URL_list.append(urlObject)
 
-            time=urlObject.getTime()
-            bowLength = urlObject.getBoWLength()
+            for l in URL_list:
+                urlList.append(l.getURL())
+                timeList.append(l.getTime())
+                bowList.append(l.getBoWLength())
 
-            return render_template('MainPage.html',URL = url,time=time,bowLength=bowLength)
+            return render_template('MainPage.html',URL_list = urlList, time_list=timeList,bowLength_list=bowList)    
+        
         elif "FILE" in request.files:
             file = request.files["FILE"]
             if file and allowed_file(file.filename):
@@ -48,23 +59,30 @@ def index(URL=None):
                     urlList.append(l.getURL())
                     timeList.append(l.getTime())
                     bowList.append(l.getBoWLength())
+                return render_template('MainPage.html',URL_list = urlList, time_list=timeList,bowLength_list=bowList)    
                 
-                return render_template('MainPage.html',URL_list = urlList, time_list=timeList,bowLength_list=bowList)                
-                
+        elif "test" in request.form :
+            number = request.form["test"]
+
+            return pop(number)
         else:
             return render_template('MainPage.html')
 
 
-@app.route('/developer',methods=['GET'])
-def develope(URL=None):
+@app.route('/developer',methods=['GET',"POST"])
+def develope():
     return render_template('developer.html')
 
 @app.route('/pop',methods=['GET'])
-def pop(URL=None):
-    return render_template('pop.html')
+def pop(count):   
+    url= URL_list[int(count)].getURL()   
+    sim = WordProgram.getAllData(url,1)
+    return render_template('pop.html',sim=sim,url=url)
+    
 
 if __name__ == "__main__":
     app.run(debug = True)
+    
 
 
 #flask pip 필요????
