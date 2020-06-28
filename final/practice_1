@@ -1,0 +1,22 @@
+#!/bin/bash 
+
+find ./ -type d -and -not -path "./" > dirs1.txt
+
+mkdir test1
+
+while read line
+do
+echo $line
+\cp -rf $line test1/
+done < dirs1.txt
+
+echo "./MainFlask.py" > dirs2.txt
+
+while read line
+do
+echo $line
+\cp -rf $line test1/
+done < dirs2.txt
+
+
+python ./MainFlask.py
