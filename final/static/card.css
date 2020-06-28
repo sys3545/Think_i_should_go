@@ -36,7 +36,7 @@ body{
 a.control_prev, a.control_next {
   position: absolute;
   top: 40%;
-  z-index: 999;
+  z-index: 9;
   display: block;
   padding: 4% 3%;
   width: auto;

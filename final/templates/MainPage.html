@@ -22,7 +22,7 @@ height:30px;
 position:fixed;
 padding-top:15px;
 text-align:center;
-z-index:4;
+z-index:20;
 }
 #top_title{
 font-family:arial;
@@ -108,22 +108,32 @@ A:link{text-decoration:none; color:white;}
 A:visited{text-decoration:none; color:white;}
 A:hover{text-decoration:none; color:yellow;}
 
+#line_wrap{
+width:650px;
+height:20px;
+margin:auto;
+border: 1px solid white;
+}
 #result_wrap{
 width:1000px;
 height:300px;
-background:green;
+background:white;
 margin:auto;
 display:grid;
 grid-template-columns:50% 50%;
 
 }
 #result_button{
+font-weight:bold;
+line-height: 80px;
+font-size:21px;
 width:250px;
-height:100px;
-background:#5F5FBF;
+height:80px;
+background:white;
 text-align:center;
 margin:auto;
 border-radius:2em;
+border: 4px solid #5F5FBF;
 }
 </style>
 </head>
@@ -149,7 +159,7 @@ border-radius:2em;
 <p> 
  <span id="center_title"> WEBPAGE SIMILARITY ANALYSIS </span> 
 </p>
-<p> </p>
+<p><div id="line_wrap"> <hr width="100%" color="5F5FBF"> </div> </p>
 <div id="center_area"> 
  <div id="center_search">
    <form action="http://127.0.0.1:5000/" method="POST">
@@ -172,9 +182,6 @@ border-radius:2em;
     <span style="font-weight:bold; font-size:30px; font-family:arial; color:navy;">ANALYSIS RESULT </span>
   </p>
 </div>
-{% if URL == None %}
-  <p> Please Input </p>
-{% else %}
 <div id="slider" style="width:1000px; height:300px;">
   <a href="#" class="control_next">></a>
   <a href="#" class="control_prev"><</a>
@@ -187,13 +194,16 @@ border-radius:2em;
    {% endfor %}
   </ul>  
 </div>
-{% endif %}
 <div id="result_wrap">
  <div id="result_button">
-   <a href="http://127.0.0.1:5000/pop" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no'); return false;">simility </a>
+   <a href="http://127.0.0.1:5000/pop" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no');" return false; style="color:#5F5FBF">
+    Similiar Webpage
+   </a>
  </div>
  <div id="result_button"> 
-  <a href="http://127.0.0.1:5000/pop" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no'); return false;">Top 10 ward</a>
+  <a href="http://127.0.0.1:5000/pop" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no'); return false;" style="color:#5F5FBF">
+   Top 10 ward
+  </a>
  </div>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
