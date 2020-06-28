@@ -43,15 +43,9 @@ def index(URL=None):
 
     else: #post
         if "URL" in request.form :
-            s = 0
-            url = request.form["URL"]
-            for o in URL_list:
-                if url == o.getURL():
-                    s=1
-                    break
-            if s==0:
-                urlObject = WordProgram(url)
-                URL_list.append(urlObject)
+
+            urlObject = WordProgram(url)
+            URL_list.append(urlObject)
 
             for l in URL_list:
                 urlList.append(l.getURL())
@@ -67,11 +61,6 @@ def index(URL=None):
                 filename = "./txtFolder/" + secure_filename(file.filename)
                 program = ActTextFile(filename)
                 programList = program.getList()
-                for i in range(len(programList)):
-                    if len(URL_list) < 1: break
-                    for u in URL_list:
-                        if u.getURL() == programList[i].getURL():
-                            programList.pop(i)
 
                 URL_list += programList
 

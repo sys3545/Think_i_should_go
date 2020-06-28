@@ -48,7 +48,7 @@ class WordProgram:
                         word_bag[w] += 1
                     elif w not in word_bag.keys():
                         word_bag[w] =1
-        print(URL,word_bag)
+        
         self.word_config_time="{:.3f}".format(time.time() - start_time) #get time
         
         #저장 데이터 형식 지정.
@@ -145,7 +145,7 @@ class WordProgram:
         top10Words=[] ; count=0
         for doc in docs_res: 
             if count == 10: break
-            top10Words.append(doc)
+            top10Words.append(doc[0])
             count+=1
         # print(top10Words)
         return top10Words
