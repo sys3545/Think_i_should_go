@@ -19,4 +19,12 @@ echo $line
 done < dirs2.txt
 
 
+pip install requests
+pip install flask
+pip install elasticsearch
+pip install bs4
+pip install nltk
+pip install ssl
+pip install numpy  
+
 python ./MainFlask.py
