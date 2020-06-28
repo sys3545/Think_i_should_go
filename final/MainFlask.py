@@ -10,6 +10,9 @@ import os
 
 URL_list=[]
 count=0
+urlList=[]
+timeList=[]
+bowList=[]
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'txt'}
 
@@ -21,7 +24,12 @@ def allowed_file(filename):
 def index(URL=None):
     global URL_list
     global count
+    global urlList
+    global timeList
+    global bowList
 
+    URL_list=[]
+    count=0
     urlList=[]
     timeList=[]
     bowList=[]
@@ -61,10 +69,14 @@ def index(URL=None):
                     bowList.append(l.getBoWLength())
                 return render_template('MainPage.html',URL_list = urlList, time_list=timeList,bowLength_list=bowList)    
                 
-        elif "test" in request.form :
-            number = request.form["test"]
+        elif "similar" in request.form:
+            number = request.form["similar"]
+            return pop(number,1)
 
-            return pop(number)
+        elif "topWords" in request.form :
+            number = request.form["topWords"]
+
+            return pop(number,0)
         else:
             return render_template('MainPage.html')
 
@@ -74,9 +86,10 @@ def develope():
     return render_template('developer.html')
 
 @app.route('/pop',methods=['GET'])
-def pop(count):   
+def pop(count,status):   
     url= URL_list[int(count)].getURL()   
-    sim = WordProgram.getAllData(url,1)
+
+    sim = WordProgram.getAllData(url,status)
     return render_template('pop.html',sim=sim,url=url)
     
 

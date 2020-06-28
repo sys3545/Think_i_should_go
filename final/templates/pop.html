@@ -2,15 +2,20 @@
 
 <html>
 <head>
-<title> Test Pop </title>
+<title> Top3 Similar Webpage </title>
 <meta charset="utf-8">
+<style>
+    p{text-align: center;}
+</style>
 </head>
 <body>
 <div>
+    <p><h2>{{url}}</h2><br></p>
+    {% set INT=namespace(a=1) %}
     {% for s in sim %}
-        {{s}}
+        <p>Top{{INT.a}} : {{s}}<br></p> 
+        {% set INT.a=INT.a + 1 %}
     {% endfor %}
-    {{url}}
 </div>
 
 

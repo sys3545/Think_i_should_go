@@ -135,6 +135,13 @@ margin:auto;
 border-radius:2em;
 border: 4px solid #5F5FBF;
 }
+#slider_wrap{
+  width:900px;
+  height:200px;
+  background:gray;
+  margin:auto;
+  z-index: 2;
+}
 </style>
 </head>
 <body>
@@ -187,29 +194,30 @@ border: 4px solid #5F5FBF;
   <a href="#" class="control_next" onclick="a();plus(); ">></a>
   <a href="#" class="control_prev" onclick="a();discount(); "><</a>
   <ul style="width: 2000px; margin-left:-1000px;">
-    <li>Please turn to next page</li>
+    <li style="line-height:300px; color:white; font-size:40px; font-family:arial;">Please turn to next page</li>
    {% for i in range(URL_list|length) %}
      <li>
-      <span style="font-weight:bold; font-size:50px; font-family:arial; color:white;"> {{URL_list[i]}}<br> </span> 
-      <span style="font-weight:bold; font-size:22px; font-family:arial; color:white;"> TIME : {{time_list[i]}}sec &nbsp;&nbsp;&nbsp; Words count : {{bowLength_list[i]}}
-     </li>
+         <span style="line-height:200px; font-weight:bold; font-size:40px; font-family:arial; color:white;"> {{URL_list[i]}}<br> </span> 
+         <span style="font-weight:bold; font-size:22px; font-family:arial; color:white;"> TIME : {{time_list[i]}}sec &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Words count : {{bowLength_list[i]}}  
+    </li>
    {% endfor %}
   </ul>  
 </div>
+<p></p>
 <div id="result_wrap">
- <div id="result_button">
-   <a href="http://127.0.0.1:5000/pop" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no'); return false;" style="color:#5F5FBF">
-    Similiar Webpage
-   </a>
- </div>
- <div id="result_button"> 
-  <a href="http://127.0.0.1:5000/pop" onclick="window.open(this.href, '_blank', 'width=500px,height=300px,toolbars=no'); return false;" style="color:#5F5FBF">
-   Top 10 ward
-  </a>
- </div>
+  <div style="margin:auto;">
+ <form action="http://127.0.0.1:5000/" method="post">
+  <input type="hidden" id="myField" value=0 name="similar">
+  <input id="result_button" type="submit" value="Similiar Webpage" style="font-family: arial; color:#5F5FBF">
+</form>
+</div>
+ <div style="margin:auto;">
+  <form action="http://127.0.0.1:5000/" method="post">
+   <input type="hidden" id="myField2" value=0 name="topWords">
+   <input id="result_button" type="submit" value="Top10 Wards" style="font-family: arial; color:#5F5FBF">
+ </form>
 </div>
 <br><br><br><br><br><br><br><br>
-<p>END</p>
 <br><br>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
@@ -227,13 +235,9 @@ border: 4px solid #5F5FBF;
 function a() {
     // document.getElementById('forChecking').innerText=count
     document.getElementById('myField').value = count;
+    document.getElementById('myField2').value = count;
 }
 
 </script>
-<form action="http://127.0.0.1:5000/" method="post">
-  <input type="hidden" id="myField" value=0 name="test">
-  <input type="submit" value="here">
-</form>
-
 </body>
 </html>
