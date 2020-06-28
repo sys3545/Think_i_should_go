@@ -87,8 +87,7 @@ def develope():
 
 @app.route('/pop',methods=['GET'])
 def pop(count,status):   
-    url= URL_list[int(count)].getURL()   
-
+    url= URL_list[int(count)].getURL()
     sim = WordProgram.getAllData(url,status)
     return render_template('pop.html',sim=sim,url=url)
     
