@@ -1,6 +1,7 @@
 # Think_i_should_go
 the repository for final project of opensource programming team 7, prof snowflower
- 
+
+# 필독! 첨부파일에 넣을 텍스트파일은 final/txtFolder/ 에 있어야합니다.
 
 2020-06-17
 백엔드 프로그램( data insert to Elasticesearch, get tf-idf, get cosine similarity ) 업로드
