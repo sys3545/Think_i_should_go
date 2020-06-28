@@ -9,4 +9,7 @@ flask 구조 구축( template-static-python )
 프론트엔드 구조 구성 끝
 
 2020-06-25
-flask 연동
+flask 연동 작업(1)
+
+2020-06-26
+flask 연동 작업(2)
