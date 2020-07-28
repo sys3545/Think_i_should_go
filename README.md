@@ -1,5 +1,5 @@
 # Think_i_should_go
-the repository for final project of opensource programming team 7, prof snowflower
+The repository for final project of opensource programming team 7, prof snowflower
 
 # 필독! 첨부파일에 넣을 텍스트파일은 final/txtFolder/ 에 있어야합니다.
 # shell 실행파일은 practice_1입니다.
